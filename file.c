@@ -9,9 +9,9 @@ void initFile(T_File *ptrF) //mettre Tete et Queue à -1
 
 int  retirer(T_File *ptrF,T_Elt *ptrE) //si pas vide, en tete de file
 {
-    if (fileVide==0)
+    if (fileVide(ptrF)==0)
     {
-        affecterElt(ptrE,ptrF->Elts[ptrF->Tete]);
+        affecterElt(ptrE,&(ptrF->Elts[ptrF->Tete]));
         ptrF->Tete=(ptrF->Tete+1)%10;
         return 1;
     }
@@ -21,19 +21,26 @@ return 0;
 
 int ajouter(T_File *ptrF,T_Elt *ptrE) // si espace libre, ajout en queue
 {
-    if (filePleine==0)
+    if (filePleine(ptrF)==0)
     {
-        affecterElt(ptrF->Elts[ptrF->Queue],ptrE);
+        if (ptrF->Queue==-1)
+        {
+            ptrF->Tete=0;
+            ptrF->Queue=0;
+        }
+        
+        affecterElt(&(ptrF->Elts[ptrF->Queue]),ptrE);
         ptrF->Queue=(ptrF->Queue+1)%10;
         return 1;
     }
     
 return 0;
-} 
+}
+
 
 int fileVide(const  T_File *prtF) // qd Tete == 0 
 {
-    if ((prtF->Queue-prtF->Tete)==0 || prtF->Queue==-1 || prtF->Tete==-1)
+    if (prtF->Queue==prtF->Tete)
     {
         return 1;
     }
@@ -58,11 +65,13 @@ T_Elt  premier(T_File *ptrF) //valeur en tete de file
 
 void afficherFile(T_File *ptrF)
 {
-    if (fileVide ==0)
+    if (fileVide(ptrF) ==0)
     {
-        for (int i = ptrF->Tete; i < (ptrF->Queue-ptrF->Tete)%10; i++)
+        
+        for (int i = ptrF->Tete; i <(ptrF->Queue-ptrF->Tete)%10; i++)
         {
-            afficherElt(ptrF->Elts[i%10]);
+            printf("test");
+            afficherElt(&(ptrF->Elts[i%10]));
         }
     }
 }
@@ -112,15 +121,15 @@ void testFile(T_File *F) {
             break; 
         case 3 : 
             printf("Quelle element voulez-vous ajouter ?\n");
-            saisirElt(test);
-            if(ajouter(F,test)) {
+            saisirElt(&test);
+            if(ajouter(F,&test)) {
                 printf("Ajout réussie !\n");
             } else {
                 printf("Ajout Impossible !\n");
             }
             break;
         case 4 : 
-            if(retirer(F, test)) {
+            if(retirer(F, &test)) {
                 printf("Suppression Réussie !\n");
             } else {
                 printf("Suppression Impossible !\n");
@@ -129,14 +138,15 @@ void testFile(T_File *F) {
         case 5 :
             if(!fileVide(F)) {
                 printf("Le premier element est : \n");
-                premier(F);
+                test=premier(F);
+                afficherElt(&test);
             } else {
                 printf("la file est vide\n");
             }
             break;
         case 6 :
             printf("La file est : ");
-            afficherPile(F);
+            afficherFile(F);
             break;
         }
     }while(chx!=0);
