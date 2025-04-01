@@ -60,23 +60,11 @@ void afficherFile(T_File *ptrF)
 {
     if (fileVide ==0)
     {
-        for (int i = 0; i < abs(ptrF->Queue-ptrF->Tete); i++)
+        for (int i = ptrF->Tete; i < abs(ptrF->Queue-ptrF->Tete); i++)
         {
             afficherElt(ptrF->Elts[i]);
         }
     }
-}
-
-void testFile(T_File *ptrF){
-    T_Elt test;
-    initFile(ptrF);
-    if(fileVide(ptrF)==1)
-    saisirElt(test);
-    ajouter(ptrF,test);
-    afficherElt(ptrF->Elts[ptrF->Tete]);
-    afficherFile(ptrF);
-
-
 }
 
 
