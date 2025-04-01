@@ -64,13 +64,23 @@ T_Elt  premier(T_File *ptrF) //valeur en tete de file
 }
 
 
+
 void afficherFile(T_File *ptrF)
 {
-    for (int i = ptrF->Tete; i < (ptrF->Queue-ptrF->Tete)%MAX; i++)
-    {
-       
+    if (fileVide(ptrF)) {
+        printf("La file est vide.\n");
+        return;
     }
-}    
+    
+    printf("Contenu de la file : ");
+    int i = ptrF->Tete;
+    while (i != ptrF->Queue) {
+        afficherElt(&(ptrF->Elts[i]));
+        printf(" "); // Espacement entre les éléments
+        i = (i + 1) % MAX;
+    }
+    printf("\n");
+}
 
 int menuFile()
 {
