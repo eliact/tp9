@@ -34,9 +34,9 @@ int empiler( T_Pile *P, T_Elt *e) { //renvoie 0 si pile pleine, sinon 1
 
 int depiler( T_Pile *P, T_Elt *pelt) {  //renvoie 0 si pile vide, sinon 1
     if(pilevide(P)) return 0;
-    affecterElt(pelt, &(P->Elts[P->nbElts]));
+    affecterElt(pelt, &(P->Elts[P->nbElts - 1]));
     P->nbElts--;
-    // afficherElt(pelt);
+    afficherElt(pelt);
     return 1;
 }
 

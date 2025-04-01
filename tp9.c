@@ -113,7 +113,7 @@ switch (chx)
 		break;
 	case 4 : 
 		if(depiler(P, &elem)) {
-			printf("Depilement Réussie !\n");
+			printf("\nDepilement Réussie !\n");
 		} else {
 			printf("Depilement Impossible !\n");
 		}
