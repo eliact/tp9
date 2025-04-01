@@ -3,8 +3,7 @@
 #include "pile.h"
 #include "file.h"
 
-void testPile(T_Pile *P);
-int menuPile();
+
 int menu()
 {
 
@@ -56,88 +55,4 @@ switch (chx)
 
 printf("\nau plaisir de vous revoir ...\n");
 return 0;
-}
-
-int menuPile()
-{
-
-int choix;
-printf("\n\n\n 1 : pilePleine");
-printf("\n 2 : pileVide");
-printf("\n 3 : empiler");
-printf("\n 4 : depiler");
-printf("\n 5 : sommet");
-printf("\n 6 : hauteur");
-printf("\n 7 : afficherPile");
-printf("\n 0 :  QUITTER  ");
-printf("\n votre choix ?  ");
-scanf("%d",&choix);
-return choix;
-}
-
-
-void testPile(T_Pile *P) {
-initPile(P);
-int chx;
-T_Elt elem;
-// int taille;
-//char chaine[20];
-
-do
-{
-chx=menuPile();
-switch (chx)
-	{
-	case 1 :  
-		if(pilepleine(P)) {
-			printf("La pile est pleine\n");
-		} else {
-			printf("La pile n'est pas pleine\n");
-		}
-		break;
-	case 2 : 
-		if(pilevide(P)) {
-			printf("La pile est vide\n");
-		} else {
-			printf("La pile n'est pas vide\n");
-		}
-		break; 
-	case 3 : 
-		printf("Quelle element voulez-vous ajouter ?\n");
-		saisirElt(&elem);
-		if(empiler(P,&elem)) {
-			printf("Empilement réussie !\n");
-		} else {
-			printf("Empilement Impossible !\n");
-		}
-		break;
-	case 4 : 
-		if(depiler(P, &elem)) {
-			printf("\nDepilement Réussie !\n");
-		} else {
-			printf("Depilement Impossible !\n");
-		}
-		break;
-	case 5 :
-		if(!pilevide(P)) {
-			printf("Le sommet est : ");
-			T_Elt som = sommet(P);
-			afficherElt(&som);
-			printf("\n");
-		} else {
-			printf("la pile est vide\n");
-		}
-		break;
-	case 6 :
-		printf("La pile a une hauteure de: %d", hauteur(P));
-		break;
-	case 7:
-		printf("La pile est : \n");
-		afficherPile(P);
-		break;
-	}
-}while(chx!=0);
-
-printf("\nFin test Pile\n");
-return;
 }
