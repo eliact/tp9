@@ -67,6 +67,18 @@ void afficherFile(T_File *ptrF)
     }
 }
 
+void testFile(T_File *ptrF){
+    T_Elt test;
+    initFile(ptrF);
+    if(fileVide(ptrF)==1)
+    saisirElt(test);
+    ajouter(ptrF,test);
+    afficherElt(ptrF->Elts[ptrF->Tete]);
+    afficherFile(ptrF);
+
+
+}
+
 
 
 
