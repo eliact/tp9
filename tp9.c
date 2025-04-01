@@ -10,8 +10,8 @@ int menu()
 
 int choix;
 printf("\n\n\n SDA1 TP9");
-printf("\n\n\n 1 : tester mon fichier file.c");
-printf("\n 2 : tester mon fichier pile.c");
+printf("\n\n\n 1 : tester mon fichier pile.c");
+printf("\n 2 : tester mon fichier file.c");
 printf("\n 3 : afficher et compter les permutations d'une chaine");
 printf("\n 4 : afficher et compter les solutions pour un échiquier ");
 printf("\n 0 :  QUITTER  ");
