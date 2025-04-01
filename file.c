@@ -62,6 +62,8 @@ T_Elt  premier(T_File *ptrF) //valeur en tete de file
 {
     return ptrF->Elts[ptrF->Tete];
 }
+
+
 void afficherFile(T_File *ptrF)
 {
     printf("Affichage File \n\n");
