@@ -12,7 +12,7 @@ int  retirer(T_File *ptrF,T_Elt *ptrE) //si pas vide, en tete de file
     if (fileVide(ptrF)==0)
     {
         affecterElt(ptrE,&(ptrF->Elts[ptrF->Tete]));
-        ptrF->Tete=(ptrF->Tete+1)%10;
+        ptrF->Tete=(ptrF->Tete+1)%MAX;
         return 1;
     }
     
@@ -30,7 +30,7 @@ int ajouter(T_File *ptrF,T_Elt *ptrE) // si espace libre, ajout en queue
         }
         
         affecterElt(&(ptrF->Elts[ptrF->Queue]),ptrE);
-        ptrF->Queue=(ptrF->Queue+1)%10;
+        ptrF->Queue=(ptrF->Queue+1)%MAX;
         return 1;
     }
     
@@ -50,7 +50,7 @@ return 0;
 
 int filePleine(const  T_File *ptrF) // qd MAX elts dans la file 
 {
-    if ((ptrF->Queue+1)%10==ptrF->Tete)
+    if ((ptrF->Queue+1)%MAX==ptrF->Tete)
     {
         return 1;
     }
@@ -74,11 +74,10 @@ void afficherFile(T_File *ptrF)
     
     printf("Contenu de la file : ");
     int i = ptrF->Tete;
-    while (i != ptrF->Queue) {
+    do {
         afficherElt(&(ptrF->Elts[i]));
-        printf(" "); // Espacement entre les éléments
         i = (i + 1) % MAX;
-    }
+    }while (i != ptrF->Queue);
     printf("\n");
 }
 
