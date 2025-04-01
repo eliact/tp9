@@ -62,17 +62,14 @@ T_Elt  premier(T_File *ptrF) //valeur en tete de file
 {
     return ptrF->Elts[ptrF->Tete];
 }
-
 void afficherFile(T_File *ptrF)
 {
-    if (fileVide(ptrF) ==0)
-    {
-        
-        for (int i = ptrF->Tete; i <(ptrF->Queue-ptrF->Tete)%10; i++)
-        {
-            printf("test");
-            afficherElt(&(ptrF->Elts[i%10]));
-        }
+    printf("Affichage File \n\n");
+    int i = ptrF->Tete ;
+    while ( i != ptrF->Queue){
+        afficherElt(&ptrF->Elts[i]);
+        i = i + 1;
+        i = i % MAX;
     }
 }
 
