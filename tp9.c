@@ -3,7 +3,8 @@
 #include "pile.h"
 #include "file.h"
 
-
+void testPile(T_Pile *P);
+int menuPile();
 int menu()
 {
 
@@ -23,6 +24,7 @@ int main()
 {
 T_File mafile;
 T_Pile mapile;
+initPile(&mapile);
 int chx;
 // int taille;
 //char chaine[20];
@@ -34,7 +36,7 @@ switch (chx)
 	{
 	case 1 :  
 		//testez toutes vos fonctions par un jeu de test de votre choix
-		//testPile(&mapile); //TP9 partie 1 : à ecrire 
+		testPile(&mapile); //TP9 partie 1 : à ecrire 
 		break;
 	case 2 : //testez toutes vos fonctions par un jeu de test de votre choix
 		// testFile(&mafile); //TP9 partie 1 : à ecrire 
@@ -54,5 +56,84 @@ switch (chx)
 }while(chx!=0);
 
 printf("\nau plaisir de vous revoir ...\n");
+return 0;
+}
+
+int menuPile()
+{
+
+int choix;
+printf("\n\n\n 1 : pilePleine");
+printf("\n 2 : pileVide");
+printf("\n 3 : empiler");
+printf("\n 4 : depiler");
+printf("\n 5 : sommet");
+printf("\n 6 : hauteur");
+printf("\n 7 : afficherPile");
+printf("\n 0 :  QUITTER  ");
+printf("\n votre choix ?  ");
+scanf("%d",&choix);
+return choix;
+}
+
+
+void testPile(T_Pile *P) {
+int chx;
+T_Elt elem;
+// int taille;
+//char chaine[20];
+
+do
+{
+chx=menuPile();
+switch (chx)
+	{
+	case 1 :  
+		if(pilepleine(P)) {
+			printf("La pile est pleine\n");
+		} else {
+			printf("La pile n'est pas pleine\n");
+		}
+		break;
+	case 2 : 
+		if(pilevide(P)) {
+			printf("La pile est vide\n");
+		} else {
+			printf("La pile n'est pas vide\n");
+		}
+		break; 
+	case 3 : 
+		printf("Quelle element voulez-vous ajouter ?");
+		scanf("%s", &elem);
+		if(empiler(P,elem)) {
+			printf("Empilement réussie !\n");
+		} else {
+			printf("Empilement Impossible !\n");
+		}
+		break;
+	case 4 : 
+		if(depiler(P, elem)) {
+			printf("Desempilement Réussie !\n");
+		} else {
+			printf("Désempilement Impossible !\n");
+		}
+		break;
+	case 5 :
+		if(!pilevide(P)) {
+			printf("Le sommet est : ");
+			sommet(P);
+		}
+		break;
+	case 6 :
+		printf("La pile a une hauteure de: %d", hauteur(P));
+		break;
+	case 7:
+		printf("La pile est : ");
+		afficherPile(P);
+		break;
+	}
+}while(chx!=0);
+
+printf("\nFin test Pile\n");
 return 0;
 }
