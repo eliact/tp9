@@ -120,8 +120,10 @@ switch (chx)
 		break;
 	case 5 :
 		if(!pilevide(P)) {
-			printf("Le sommet est : ");
+			printf("Le sommet est : \n");
 			sommet(P);
+		} else {
+			printf("la pile est vide\n");
 		}
 		break;
 	case 6 :
