@@ -66,14 +66,11 @@ T_Elt  premier(T_File *ptrF) //valeur en tete de file
 
 void afficherFile(T_File *ptrF)
 {
-    printf("Affichage File \n\n");
-    int i = ptrF->Tete ;
-    while ( i != ptrF->Queue){
-        afficherElt(&ptrF->Elts[i]);
-        i = i + 1;
-        i = i % MAX;
+    for (int i = ptrF->Tete; i < (ptrF->Queue-ptrF->Tete)%MAX; i++)
+    {
+       
     }
-}
+}    
 
 int menuFile()
 {
