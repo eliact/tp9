@@ -113,15 +113,16 @@ switch (chx)
 		break;
 	case 4 : 
 		if(depiler(P, &elem)) {
-			printf("Desempilement Réussie !\n");
+			printf("Depilement Réussie !\n");
 		} else {
-			printf("Désempilement Impossible !\n");
+			printf("Depilement Impossible !\n");
 		}
 		break;
 	case 5 :
 		if(!pilevide(P)) {
 			printf("Le sommet est : ");
-			afficherElt(sommet(P));
+			T_Elt som = sommet(P);
+			afficherElt(&som);
 			printf("\n");
 		} else {
 			printf("la pile est vide\n");
