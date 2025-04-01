@@ -34,7 +34,7 @@ int empiler( T_Pile *P, T_Elt *e) { //renvoie 0 si pile pleine, sinon 1
 
 int depiler( T_Pile *P, T_Elt *pelt) {  //renvoie 0 si pile vide, sinon 1
     if(pilevide(P)) return 0;
-    affecterElt(pelt, &(P->Elts[P->nbElts]));
+    affecterElt(pelt, &(P->Elts[P->nbElts - 1]));
     P->nbElts--;
     afficherElt(pelt);
     return 1;
@@ -43,7 +43,7 @@ int depiler( T_Pile *P, T_Elt *pelt) {  //renvoie 0 si pile vide, sinon 1
 
 //apeller si pile non vide
 T_Elt sommet(const  T_Pile *P) { 
-    return P->Elts[P->nbElts];
+    return P->Elts[P->nbElts-1];
 }
 
 
@@ -55,8 +55,8 @@ int hauteur(const  T_Pile *P) {
 
 void afficherPile(  T_Pile *P) {
     int nbElem = P->nbElts, i;
-    for(i = 0; i < nbElem; i++) {
-        afficherElt(P->Elts[i]);
+    for(i = nbElem; i > 0; i--) {
+        afficherElt(&(P->Elts[i-1]));
     }
     return;
 }

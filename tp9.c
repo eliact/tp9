@@ -103,25 +103,27 @@ switch (chx)
 		}
 		break; 
 	case 3 : 
-		printf("Quelle element voulez-vous ajouter ?");
-		scanf("%s", &elem);
-		if(empiler(P,elem)) {
+		printf("Quelle element voulez-vous ajouter ?\n");
+		saisirElt(&elem);
+		if(empiler(P,&elem)) {
 			printf("Empilement réussie !\n");
 		} else {
 			printf("Empilement Impossible !\n");
 		}
 		break;
 	case 4 : 
-		if(depiler(P, elem)) {
-			printf("Desempilement Réussie !\n");
+		if(depiler(P, &elem)) {
+			printf("\nDepilement Réussie !\n");
 		} else {
-			printf("Désempilement Impossible !\n");
+			printf("Depilement Impossible !\n");
 		}
 		break;
 	case 5 :
 		if(!pilevide(P)) {
-			printf("Le sommet est : \n");
-			sommet(P);
+			printf("Le sommet est : ");
+			T_Elt som = sommet(P);
+			afficherElt(&som);
+			printf("\n");
 		} else {
 			printf("la pile est vide\n");
 		}
@@ -130,7 +132,7 @@ switch (chx)
 		printf("La pile a une hauteure de: %d", hauteur(P));
 		break;
 	case 7:
-		printf("La pile est : ");
+		printf("La pile est : \n");
 		afficherPile(P);
 		break;
 	}
