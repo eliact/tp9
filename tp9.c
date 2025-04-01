@@ -24,7 +24,6 @@ int main()
 {
 T_File mafile;
 T_Pile mapile;
-initPile(&mapile);
 int chx;
 // int taille;
 //char chaine[20];
@@ -78,6 +77,7 @@ return choix;
 
 
 void testPile(T_Pile *P) {
+initPile(P);
 int chx;
 T_Elt elem;
 // int taille;
@@ -135,5 +135,5 @@ switch (chx)
 }while(chx!=0);
 
 printf("\nFin test Pile\n");
-return 0;
+return;
 }
